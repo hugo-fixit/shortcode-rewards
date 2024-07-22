@@ -5,6 +5,11 @@
 [anonymous]
 other = "匿名"
 
+[rewardLog.statistics]
+total = "总计"
+singleLargest = "单笔最大"
+from = "{{ .Sponsor }} 的 {{ .Money }}"
+
 [rewardLog]
 content = "{{ .Sponsor }} 通过 {{ .Origin }} 打赏了 {{ .Money }}"
 remark = "备注：{{ . }}"

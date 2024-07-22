@@ -2,8 +2,6 @@
 
 A Hugo theme component with `reward-log` or `sponsor-log` shortcode.
 
-TODO feature image here
-
 ## Demo
 
 - [FixIt Docs](https://fixit.lruihao.cn/contributing/overview/#sponsor)
@@ -29,10 +27,10 @@ The installation method is the same as [installing a theme](https://fixit.lruiha
 
 ## Inject Partial
 
-Inject the `shortcode-rewards.html` into the `custom-assets` through the custom block opened by the FixIt theme in the `layouts/partials/custom.html` file:
+Inject the `shortcode-rewards.html` into the `custom-head` through the custom block opened by the FixIt theme in the `layouts/partials/custom.html` file:
 
 ```go-html-template
-{{- define "custom-assets" -}}
+{{- define "custom-head" -}}
   {{- partial "inject/shortcode-rewards.html" . -}}
 {{- end -}}
 ```
@@ -55,6 +53,46 @@ Next, use the `reward-log` shortcode in any page:
 
 > [!note]
 > For compatibility with older versions, `sponsor-log` shortcode can also be used, and the corresponding data file is `sponsor_log.yml`.
+
+## Params
+
+### Shortcode
+
+The `reward-log` shortcode has the following named parameters, and the positional parameters ordered from top to bottom:
+
+| Parameter | Description                                                       | Type    | Optional values        | Default |
+| :-------- | :---------------------------------------------------------------- | :------ | :--------------------- | :------ |
+| reverse   | whether the node is ascending or descending, default is ascending | boolean | -                      | false   |
+| placement | position of timestamp                                             | string  | top / bottom           | bottom  |
+| animation | whether to enable animation                                       | boolean | -                      | false   |
+| size      | node size                                                         | string  | small / medium / large | medium  |
+| node      | node style                                                        | string  | circle / dot           | circle  |
+| width     | `#` container width                                               | string  | -                      | -       |
+| height    | `#` container height                                              | string  | -                      | -       |
+| class     | `#` container classname                                           | string  | -                      | -       |
+
+> Parameters marked with `#` only support named parameters.
+
+### Data
+
+The `reward_log.yml` file has the following fields:
+
+```yaml
+# The sponsor logs data format is as follows
+# currency: [CNY, USD, EUR, ...] https://gohugo.io/functions/lang/formatcurrency/
+# origin: [alipay, bitcoin, paypal, wechatpay, ...]
+
+message: Thanks all!
+currency: CNY
+symbol: ¥
+# The sponsor logs inherit the FixIt Timeline events
+logs:
+  - date: "2006-01-02 15:04:05"
+    sponsor: Cell
+    money: 50
+    origin: alipay
+    remark: "Come on!"
+```
 
 ## References
 

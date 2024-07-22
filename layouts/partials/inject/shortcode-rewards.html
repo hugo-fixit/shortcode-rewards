@@ -1,0 +1,8 @@
+{{- /* shortcode-rewards.min.css */ -}}
+{{- if .HasShortcode "reward-log" -}}
+  {{- $fingerprint := .Scratch.Get "fingerprint" -}}
+  {{- $options := dict "Source" "css/shortcode-rewards.scss" "Fingerprint" $fingerprint -}}
+  {{- $toCSS := dict "targetPath" "css/shortcode-rewards.min.css" "enableSourceMap" true -}}
+  {{- $options = dict "Context" . "ToCSS" $toCSS | merge $options -}}
+  {{- partial "plugin/style.html" $options -}}
+{{- end -}}
