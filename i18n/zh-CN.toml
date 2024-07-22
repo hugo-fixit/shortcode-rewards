@@ -4,6 +4,7 @@
 
 [rewardLog]
 content = "{{ .Sponsor }} 通过 {{ .Origin }} 打赏了 {{ .Amount }}"
+remark = "备注：{{ . }}"
 
 [rewardLog.origin]
 alipay = "支付宝"

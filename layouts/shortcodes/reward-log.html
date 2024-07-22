@@ -1,0 +1,21 @@
+{{- $options := dict "class" (trim (add "reward-logs " (.Get "class")) " ") -}}
+{{- $options = .Get "reverse" | default (.Get 0) | default true | dict "reverse" | merge $options -}}
+{{- $options = .Get "placement" | default (.Get 1) | dict "placement" | merge $options -}}
+{{- $options = .Get "animation" | default (.Get 2) | dict "animation" | merge $options -}}
+{{- $options = .Get "size" | default (.Get 3) | dict "size" | merge $options -}}
+{{- $options = .Get "node" | default (.Get 4) | dict "node" | merge $options -}}
+{{- /* Only .IsNamedParams */ -}}
+{{- $options = .Get "width" | dict "width" | merge $options -}}
+{{- $options = .Get "height" | default "30rem" | dict "height" | merge $options -}}
+{{- /* Get the logs */ -}}
+{{- $logs := slice -}}
+{{- range .Site.Data.reward_log.logs -}}
+  {{- $content := dict "Sponsor" .sponsor "Origin" (T (printf "rewardLog.origin.%v" .origin) | default .origin) "Amount" .amount | T "rewardLog.content" | $.Page.RenderString -}}
+  {{- $content = printf "<strong>%v</strong>" $content -}}
+  {{- with .remark -}}
+    {{- $content = printf "%v<br><span class=\"text-secondary\">%v</span>" $content (T "rewardLog.remark" .) | $.Page.RenderString -}}
+  {{- end -}}
+  {{- $log := dict "timestamp" .date "content" $content -}}
+  {{- $logs = $logs | append $log -}}
+{{- end -}}
+{{- dict "Options" $options "Events" $logs | partial "plugin/timeline.html" -}}

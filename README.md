@@ -35,10 +35,10 @@ Inject the `shortcode-rewards.html` into the `custom-assets` through the custom 
 First, create the `reward-log.yml` file and edit your data:
 
 ```bash
-cp themes/shortcode-sponsor-log/reward-log.yml.example data/reward-log.yml
+cp themes/shortcode-sponsor-log/reward_log.yml.example data/reward_log.yml
 ```
 
-> If your site is multilingual, you can create a `reward-log.en.yml` file for English and `reward-log.zh-cn.yml` for Chinese.
+> If your site is multilingual, you can create a `reward_log.en.yml` file for English and `reward_log.zh-cn.yml` for Chinese.
 
 Next, use the `reward-log` shortcode in any page:
 
@@ -47,7 +47,7 @@ Next, use the `reward-log` shortcode in any page:
 ```
 
 > [!note]
-> For compatibility with older versions, `sponsor-log` shortcode can also be used, and the corresponding data file is `sponsor-log.yml`.
+> For compatibility with older versions, `sponsor-log` shortcode can also be used, and the corresponding data file is `sponsor_log.yml`.
 
 ## References
 

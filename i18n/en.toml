@@ -3,6 +3,7 @@
 
 [rewardLog]
 content = "{{ .Sponsor }} sponsored {{ .Amount }} via {{ .Origin }}"
+remark = "Remark: {{ . }}"
 
 [rewardLog.origin]
 alipay = "Alipay"
