@@ -7,6 +7,7 @@
 {{- /* Only .IsNamedParams */ -}}
 {{- $options = .Get "width" | dict "width" | merge $options -}}
 {{- $options = .Get "height" | default "30rem" | dict "height" | merge $options -}}
+
 {{- /* Get the logs and statistics data */ -}}
 {{- $logs := slice -}}
 {{- $total := 0 -}}
@@ -26,8 +27,18 @@
 
 {{- /* statistics */ -}}
 {{- $total := dict "Number" $total "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
+{{- $logsOrderByMoney := sort .Site.Data.reward_log.logs "money" "desc" -}}
+{{- $largestOne := index $logsOrderByMoney 0 -}}
+{{- $largestMoney := dict "Number" $largestOne.money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
 
 Total: {{ $total }}
+<br>
+The largest sum: {{ dict "Sponsor" $largestOne.sponsor "Origin" (T (printf "rewardLog.origin.%v" $largestOne.origin) | default $largestOne.origin) "Money" $largestMoney | T "rewardLog.content" | $.Page.RenderString }}
+<br>
+1st: {{ dict "Number" (index $logsOrderByMoney 0).money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" }}
+2nd: {{ dict "Number" (index $logsOrderByMoney 1).money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" }}
+3rd: {{ dict "Number" (index $logsOrderByMoney 2).money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" }}
+
 
 {{- /* logs */ -}}
 {{- dict "Options" $options "Events" $logs | partial "plugin/timeline.html" -}}
