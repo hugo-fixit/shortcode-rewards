@@ -13,6 +13,7 @@ $global-border-color-dark: #363636 !default;
   justify-content: space-between;
   gap: 0.5rem;
   margin-top: 1rem;
+  padding: 0.5rem;
   border: 1px solid darken($global-border-color, 10%);
   border-radius: 0.25rem;
   border-bottom-left-radius: 0;
@@ -80,15 +81,11 @@ $global-border-color-dark: #363636 !default;
 // ==============================
 @media only screen and (max-width: 680px) {
   .reward-statistics {
-    flex-wrap: wrap;
-  
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
     .reward-statistics-item {
       width: 100%;
-      &.top3 {
-        width: 50%;
-        margin: auto;
-        transform: translateX(10px);
-      }
+      scroll-snap-align: start;
     }
   }
 }
