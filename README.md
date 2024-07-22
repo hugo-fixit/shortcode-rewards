@@ -2,9 +2,16 @@
 
 A Hugo theme component with `reward-log` or `sponsor-log` shortcode.
 
+TODO feature image here
+
 ## Demo
 
+- [FixIt Docs](https://fixit.lruihao.cn/contributing/overview/#sponsor)
+- [Lruihao's Blog](https://lruihao.cn/about/#sponsor)
+
 ## Requirements
+
+> Developed based on the FixIt Timeline plugin.
 
 - FixIt v0.3.9 or later.
 

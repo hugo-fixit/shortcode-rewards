@@ -1,8 +1,11 @@
 # The sponsor logs data format is as follows
 
+# [CNY, USD, EUR] https://gohugo.io/functions/lang/formatcurrency/
+currency: CNY
+symbol: ¥
 logs:
   - date: "2006-01-02 15:04:05"
     sponsor: Cell
-    amount: ¥50
+    money: 50
     origin: alipay # [alipay, bitcoin, paypal, wechatpay, ...]
     remark: "Come on!"

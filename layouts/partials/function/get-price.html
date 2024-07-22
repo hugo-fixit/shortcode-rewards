@@ -1,0 +1,4 @@
+{{- $price := .Number | lang.FormatCurrency 2 .Currency -}}
+{{- $symbol := .Symbol | default .Currency -}}
+{{- $price = replace $price .Currency $symbol -}}
+{{- return $price -}}

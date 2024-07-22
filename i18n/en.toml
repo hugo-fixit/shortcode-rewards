@@ -2,7 +2,7 @@
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
 [rewardLog]
-content = "{{ .Sponsor }} sponsored {{ .Amount }} via {{ .Origin }}"
+content = "{{ .Sponsor }} sponsored {{ .Money }} via {{ .Origin }}"
 remark = "Remark: {{ . }}"
 
 [rewardLog.origin]

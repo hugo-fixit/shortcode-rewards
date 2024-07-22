@@ -3,7 +3,7 @@
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
 [rewardLog]
-content = "{{ .Sponsor }} 通过 {{ .Origin }} 打赏了 {{ .Amount }}"
+content = "{{ .Sponsor }} 通过 {{ .Origin }} 打赏了 {{ .Money }}"
 remark = "备注：{{ . }}"
 
 [rewardLog.origin]

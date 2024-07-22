@@ -7,15 +7,27 @@
 {{- /* Only .IsNamedParams */ -}}
 {{- $options = .Get "width" | dict "width" | merge $options -}}
 {{- $options = .Get "height" | default "30rem" | dict "height" | merge $options -}}
-{{- /* Get the logs */ -}}
+{{- /* Get the logs and statistics data */ -}}
 {{- $logs := slice -}}
+{{- $total := 0 -}}
+{{- $currency := .Site.Data.reward_log.currency -}}
+{{- $symbol := .Site.Data.reward_log.symbol -}}
 {{- range .Site.Data.reward_log.logs -}}
-  {{- $content := dict "Sponsor" .sponsor "Origin" (T (printf "rewardLog.origin.%v" .origin) | default .origin) "Amount" .amount | T "rewardLog.content" | $.Page.RenderString -}}
+  {{- $money := dict "Number" .money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
+  {{- $content := dict "Sponsor" .sponsor "Origin" (T (printf "rewardLog.origin.%v" .origin) | default .origin) "Money" $money | T "rewardLog.content" | $.Page.RenderString -}}
   {{- $content = printf "<strong>%v</strong>" $content -}}
   {{- with .remark -}}
     {{- $content = printf "%v<br><span class=\"text-secondary\">%v</span>" $content (T "rewardLog.remark" .) | $.Page.RenderString -}}
   {{- end -}}
   {{- $log := dict "timestamp" .date "content" $content -}}
   {{- $logs = $logs | append $log -}}
+  {{- $total = add $total .money -}}
 {{- end -}}
+
+{{- /* statistics */ -}}
+{{- $total := dict "Number" $total "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
+
+Total: {{ $total }}
+
+{{- /* logs */ -}}
 {{- dict "Options" $options "Events" $logs | partial "plugin/timeline.html" -}}
