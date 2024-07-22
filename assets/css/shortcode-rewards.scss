@@ -95,7 +95,7 @@ $global-border-color-dark: #363636 !default;
     scroll-snap-type: x mandatory;
     .reward-statistics-item {
       width: 100%;
-      scroll-snap-align: start;
+      scroll-snap-align: center;
 
       &.top3 {
         .name {
