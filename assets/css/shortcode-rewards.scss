@@ -42,8 +42,7 @@ $global-border-color-dark: #363636 !default;
 
       .name {
         display: inline-block;
-        max-width: 100px;
-        min-width: 50px;
+        width: 100px;
         margin-right: 0.25rem;
         vertical-align: bottom;
         overflow: hidden;
@@ -86,6 +85,12 @@ $global-border-color-dark: #363636 !default;
     .reward-statistics-item {
       width: 100%;
       scroll-snap-align: start;
+
+      &.top3 {
+        .name {
+          width: 200px;
+        }
+      }
     }
   }
 }
