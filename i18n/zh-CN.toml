@@ -2,6 +2,9 @@
 # 简体中文的翻译
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
+[anonymous]
+other = "匿名"
+
 [rewardLog]
 content = "{{ .Sponsor }} 通过 {{ .Origin }} 打赏了 {{ .Money }}"
 remark = "备注：{{ . }}"
