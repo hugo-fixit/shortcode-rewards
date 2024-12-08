@@ -15,6 +15,7 @@
 {{- $currency := $data.currency -}}
 {{- $symbol := $data.symbol -}}
 {{- $sponsorMap := dict -}}
+
 {{- range $data.logs -}}
   {{- $money := dict "Number" .money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
   {{- $sponsor := .sponsor | default (T "anonymous") -}}
@@ -36,8 +37,12 @@
 
 {{- /* Get the statistics data */ -}}
 {{- $total := dict "Number" $total "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
-{{- $largestOne := index (sort $data.logs "money" "desc") 0 -}}
-{{- $largestMoney := dict "Number" $largestOne.money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
+{{- $largestOne := dict -}}
+{{- $largestMoney := 0 -}}
+{{- if $data.logs -}}
+  {{- $largestOne = index (sort $data.logs "money" "desc") 0 -}}
+  {{- $largestMoney = dict "Number" $largestOne.money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
+{{- end -}}
 {{- $sponsorArr := slice -}}
 {{- range $key, $value := $sponsorMap -}}
   {{- $sponsor := dict "name" $key "money" $value -}}
@@ -56,7 +61,13 @@
   </div>
   <div class="reward-statistics-item">
     <span class="title text-secondary">{{ T "rewardLog.statistics.singleLargest" }}</span>
-    <span class="number">{{ dict "Money" $largestMoney "Sponsor" $largestOne.sponsor | T "rewardLog.statistics.from" }}</span>
+    <span class="number">
+      {{-
+        cond $largestOne.sponsor
+        (dict "Money" $largestMoney "Sponsor" $largestOne.sponsor| T "rewardLog.statistics.from")
+        "-"
+      -}}
+    </span>
   </div>
   {{- /* Render the top 3 sponsors */ -}}
   <ol class="reward-statistics-item top3">
