@@ -75,7 +75,7 @@
     {{- range $sponsorArr -}}
       {{- if (lt $top3 3) | and .name -}}
         {{- $money := dict "Number" .money "Currency" $currency "Symbol" $symbol | partial "function/get-price.html" -}}
-        <li>
+        <li class="top-{{ add $top3 1 }}">
           <span class="name" title="{{ .name }}">{{ .name }}</span>
           <span>{{ $money }}</span>
         </li>

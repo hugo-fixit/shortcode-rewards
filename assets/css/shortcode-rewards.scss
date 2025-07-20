@@ -38,6 +38,15 @@ $global-border-color-dark: #363636 !default;
 
       li {
         padding-block: 2px;
+        --top-color-1: #ff4d4d;
+        --top-color-2: #ff8c00;
+        --top-color-3: #ffd700;
+      }
+
+      @for $i from 1 through 3 {
+        li.top-#{$i}::marker {
+          color: var(--top-color-#{$i});
+        }
       }
 
       .name {
@@ -48,6 +57,7 @@ $global-border-color-dark: #363636 !default;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        font-weight: 500;
       }
     }
 
@@ -58,6 +68,7 @@ $global-border-color-dark: #363636 !default;
     .number {
       font-size: 20px;
       padding: 0 4px;
+      font-weight: 500;
     }
   }
 }

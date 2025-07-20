@@ -7,7 +7,7 @@ other = "Anonymous"
 [rewardLog.statistics]
 total = "Total"
 singleLargest = "The single largest"
-from = "{{ .Money }} from {{ .Sponsor }}"
+from = "🏆 {{ .Money }} from {{ .Sponsor }}"
 
 [rewardLog]
 content = "{{ .Sponsor }} sponsored {{ .Money }} via {{ .Origin }}"
