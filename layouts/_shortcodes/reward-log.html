@@ -1,4 +1,4 @@
-{{- $data := index .Site.Data (printf "reward_log.%v" .Page.Language) | default .Site.Data.reward_log -}}
+{{- $data := index hugo.Data (printf "reward_log.%v" .Page.Language) | default hugo.Data.reward_log -}}
 {{- $options := dict "class" (trim (add "reward-logs " (.Get "class" | default "")) " ") -}}
 {{- $options = .Get "reverse" | default (.Get 0) | default true | dict "reverse" | merge $options -}}
 {{- $options = .Get "placement" | default (.Get 1) | dict "placement" | merge $options -}}
