@@ -23,7 +23,7 @@ The installation method is the same as [installing a theme](https://fixit.lruiha
   [[module.imports]]
     path = "github.com/hugo-fixit/FixIt"
 + [[module.imports]]
-+   path = "github.com/hugo-fixit/shortcode-rewards"
++   path = "github.com/hugo-fixit/shortcode-rewards/v2"
 ```
 
 ## Configuration
@@ -43,7 +43,7 @@ In order to Inject the partial `shortcode-rewards.html` into the `custom-head` t
 First, create the `reward-log.yml` file and edit your data:
 
 ```bash
-cp themes/shortcode-sponsor-log/reward_log.yml.example data/reward_log.yml
+cp themes/shortcode-rewards/reward_log.yml.example data/reward_log.yml
 ```
 
 > If your site is multilingual, you can create a `reward_log.en.yml` file for English and `reward_log.zh-cn.yml` for Chinese.
