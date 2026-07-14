@@ -1,6 +1,5 @@
-// Color of the border
-$global-border-color: #f0f0f0 !default;
-$global-border-color-dark: #363636 !default;
+@use "sass:color";
+@use "core/functions" as *;
 
 .reward-message {
   margin-top: 1rem;
@@ -14,14 +13,10 @@ $global-border-color-dark: #363636 !default;
   gap: 0.5rem;
   margin-top: 1rem;
   padding: 0.5rem;
-  border: 1px solid darken($global-border-color, 10%);
+  border: 1px solid fi-var(global-border-color);
   border-radius: 0.25rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-
-  [data-theme="dark"] & {
-    border-color: lighten($global-border-color-dark, 10%);
-  }
 
   .reward-statistics-item {
     display: flex;
@@ -73,7 +68,7 @@ $global-border-color-dark: #363636 !default;
   }
 }
 .fi-timeline.reward-logs {
-  border: 1px solid darken($global-border-color, 10%);
+  border: 1px solid fi-var(global-border-color);
   border-radius: 0 0 0.25rem 0.25rem;
   margin-top: 0 !important;
   border-top: 0;
@@ -88,10 +83,6 @@ $global-border-color-dark: #363636 !default;
     &:last-child {
       padding: 0.5rem 1.75rem 1.5rem;
     }
-  }
-
-  [data-theme="dark"] & {
-    border-color: lighten($global-border-color-dark, 10%);
   }
 }
 

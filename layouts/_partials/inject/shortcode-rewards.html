@@ -1,8 +1,13 @@
-{{- /* shortcode-rewards.min.css */ -}}
+{{- /* CSS */ -}}
 {{- if .HasShortcode "reward-log" -}}
+  {{- $scssVars := partialCached "function/scss-vars.html" . -}}
   {{- $fingerprint := .Site.Store.Get "fingerprint" -}}
-  {{- $options := dict "Source" "css/shortcode-rewards.scss" "Fingerprint" $fingerprint -}}
-  {{- $toCSS := dict "targetPath" "css/shortcode-rewards.min.css" "enableSourceMap" true -}}
-  {{- $options = dict "Context" . "ToCSS" $toCSS | merge $options -}}
-  {{- partial "plugin/style.html" $options -}}
+
+  {{- dict
+    "Source"
+    "scss/shortcode-rewards.fixit.scss"
+    "ToCSS" (dict "vars" $scssVars)
+    "Fingerprint" $fingerprint
+    | partial "plugin/style.html"
+  -}}
 {{- end -}}
